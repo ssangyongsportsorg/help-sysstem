@@ -7,7 +7,7 @@
  */
 
 ALTER TABLE `%TABLE_PREFIX%session`
-   CHANGE `session_id` `session_id` VARCHAR(255) collate ascii_general_ci,
+   CHANGE `session_id` `session_id` VARCHAR(255) collate utf8mb4_general_ci,
    CHANGE `session_data` `session_data` BLOB;
 
 -- update schema signature

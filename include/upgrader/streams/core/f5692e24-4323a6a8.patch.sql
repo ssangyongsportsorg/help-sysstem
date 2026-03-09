@@ -80,7 +80,7 @@ CREATE TABLE `%TABLE_PREFIX%user_account` (
   `dst` tinyint(1) NOT NULL DEFAULT '1',
   `lang` varchar(16) DEFAULT NULL,
   `username` varchar(64) DEFAULT NULL,
-  `passwd` varchar(128) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL,
+  `passwd` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `backend` varchar(32) DEFAULT NULL,
   `registered` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

@@ -10,7 +10,7 @@
  */
 
 ALTER TABLE  `%TABLE_PREFIX%email`
-    CHANGE  `userpass`  `userpass` VARCHAR( 255 ) CHARACTER SET ASCII COLLATE ascii_general_ci NOT NULL;
+    CHANGE  `userpass`  `userpass` VARCHAR( 255 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
 
 -- Finished with patch
 UPDATE `%TABLE_PREFIX%config`

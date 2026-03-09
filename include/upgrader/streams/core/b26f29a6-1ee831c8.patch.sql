@@ -26,7 +26,7 @@ ALTER TABLE `%TABLE_PREFIX%user_account`
 
 CREATE TABLE `%TABLE_PREFIX%translation` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `object_hash` char(16) CHARACTER SET ascii DEFAULT NULL,
+  `object_hash` char(16) CHARACTER SET utf8mb4 DEFAULT NULL,
   `type` enum('phrase','article','override') DEFAULT NULL,
   `flags` int(10) unsigned NOT NULL DEFAULT '0',
   `revision` int(11) unsigned DEFAULT NULL,

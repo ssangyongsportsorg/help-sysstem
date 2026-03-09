@@ -9,10 +9,10 @@
 
 ALTER TABLE `%TABLE_PREFIX%file`
     -- RFC 4288, Section 4.2 declares max MIMEType at 255 ascii chars
-    CHANGE `type` `type` varchar(255) collate ascii_general_ci NOT NULL default '',
+    CHANGE `type` `type` varchar(255) collate utf8mb4_general_ci NOT NULL default '',
     CHANGE `size` `size` BIGINT(20) NOT NULL DEFAULT 0,
-    CHANGE `hash` `key` VARCHAR(86) COLLATE ascii_general_ci,
-    ADD `signature` VARCHAR(86) COLLATE ascii_bin AFTER `key`,
+    CHANGE `hash` `key` VARCHAR(86) COLLATE utf8mb4_general_ci,
+    ADD `signature` VARCHAR(86) COLLATE utf8mb4_bin AFTER `key`,
     ADD INDEX (`signature`);
 
 -- dd0022fb14892c0bb6a9700392df2de7 added `bk` and `attrs` to facilitate

@@ -7,7 +7,7 @@
 -- Increment varchar size for various fields... based on feedback from users.
 
 ALTER TABLE  `%TABLE_PREFIX%session`
-    CHANGE `session_id` `session_id` VARCHAR(255) collate ascii_general_ci NOT NULL DEFAULT  '';
+    CHANGE `session_id` `session_id` VARCHAR(255) collate utf8mb4_general_ci NOT NULL DEFAULT  '';
 
 ALTER TABLE  `%TABLE_PREFIX%ticket` 
     CHANGE  `name`  `name` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT  '',

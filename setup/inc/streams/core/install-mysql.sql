@@ -370,10 +370,10 @@ CREATE TABLE `%TABLE_PREFIX%file` (
   `ft` CHAR( 1 ) NOT NULL DEFAULT  'T',
   `bk` CHAR( 1 ) NOT NULL DEFAULT  'D',
   -- RFC 4288, Section 4.2 declares max MIMEType at 255 ascii chars
-  `type` varchar(255) collate ascii_general_ci NOT NULL default '',
+  `type` varchar(255) collate utf8mb4_general_ci NOT NULL default '',
   `size` bigint(20) unsigned NOT NULL default 0,
-  `key` varchar(86) collate ascii_general_ci NOT NULL,
-  `signature` varchar(86) collate ascii_bin NOT NULL,
+  `key` varchar(86) collate utf8mb4_general_ci NOT NULL,
+  `signature` varchar(86) collate utf8mb4_bin NOT NULL,
   `name` varchar(255) NOT NULL default '',
   `attrs` varchar(255),
   `created` datetime NOT NULL,
@@ -544,7 +544,7 @@ CREATE TABLE `%TABLE_PREFIX%note` (
 
 DROP TABLE IF EXISTS `%TABLE_PREFIX%session`;
 CREATE TABLE `%TABLE_PREFIX%session` (
-  `session_id` varchar(255) collate ascii_general_ci NOT NULL default '',
+  `session_id` varchar(255) collate utf8mb4_general_ci NOT NULL default '',
   `session_data` blob,
   `session_expire` datetime default NULL,
   `session_updated` datetime default NULL,
@@ -1009,7 +1009,7 @@ CREATE TABLE `%TABLE_PREFIX%queue_config` (
 DROP TABLE IF EXISTS `%TABLE_PREFIX%translation`;
 CREATE TABLE `%TABLE_PREFIX%translation` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `object_hash` char(16) CHARACTER SET ascii DEFAULT NULL,
+  `object_hash` char(16) CHARACTER SET utf8mb4 DEFAULT NULL,
   `type` enum('phrase','article','override') DEFAULT NULL,
   `flags` int(10) unsigned NOT NULL DEFAULT '0',
   `revision` int(11) unsigned DEFAULT NULL,
@@ -1057,7 +1057,7 @@ CREATE TABLE `%TABLE_PREFIX%user_account` (
   `timezone` varchar(64) DEFAULT NULL,
   `lang` varchar(16) DEFAULT NULL,
   `username` varchar(64) DEFAULT NULL,
-  `passwd` varchar(128) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL,
+  `passwd` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `backend` varchar(32) DEFAULT NULL,
   `extra` text,
   `registered` timestamp NULL DEFAULT CURRENT_TIMESTAMP,

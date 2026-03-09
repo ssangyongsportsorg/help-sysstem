@@ -7,7 +7,7 @@
 ALTER TABLE `%TABLE_PREFIX%email`
     ADD `smtp_auth_creds` int(11) DEFAULT '0' AFTER `smtp_auth`,
     ADD `smtp_userid` varchar(255) NOT NULL AFTER `smtp_auth_creds`,
-    ADD `smtp_userpass` varchar(255) CHARACTER SET ascii NOT NULL AFTER `smtp_userid`;
+    ADD `smtp_userpass` varchar(255) CHARACTER SET utf8mb4 NOT NULL AFTER `smtp_userid`;
 
 -- Add Default MarkAnswered Permission For Roles w/ Reply Permission
 UPDATE `%TABLE_PREFIX%role` A1
