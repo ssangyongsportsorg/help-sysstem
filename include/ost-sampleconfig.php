@@ -73,6 +73,8 @@ define('TABLE_PREFIX','%CONFIG-PREFIX');
 # define('DBSSLCA','/path/to/ca.crt');
 # define('DBSSLCERT','/path/to/client.crt');
 # define('DBSSLKEY','/path/to/client.key');
+# For TiDB Cloud Serverless or other servers requiring SSL without client certs:
+# define('DBSSLMODE','required');
 
 #
 # Mail Options

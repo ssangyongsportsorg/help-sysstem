@@ -208,6 +208,8 @@ class Bootstrap {
                 'cert' => DBSSLCERT,
                 'key' => DBSSLKEY
             );
+        elseif (defined('DBSSLMODE') && DBSSLMODE === 'required')
+            $options['ssl_mode'] = 'required';
 
         $hosts = explode(',', DBHOST);
         foreach ($hosts as $host) {

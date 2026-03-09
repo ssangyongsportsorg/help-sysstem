@@ -91,7 +91,10 @@ class Installer extends SetupWizard {
 
         //MYSQL: Connect to the DB and check the version & database (create database if it doesn't exist!)
         if(!$this->errors) {
-            if(!db_connect($vars['dbhost'],$vars['dbuser'],$vars['dbpass']))
+            $dbopts = array();
+            if (!empty($vars['dbssl']) || (isset($vars['dbhost']) && stripos($vars['dbhost'], 'tidbcloud.com') !== false))
+                $dbopts['ssl_mode'] = 'required';
+            if(!db_connect($vars['dbhost'],$vars['dbuser'],$vars['dbpass'], $dbopts))
                 $this->errors['db']=sprintf(__('Unable to connect to MySQL server: %s'), db_connect_error());
             elseif(explode('.', db_version()) < explode('.', SetupWizard::getMySQLVersion()))
                 $this->errors['db']=sprintf(__('osTicket requires MySQL %s or later!'),SetupWizard::getMySQLVersion());

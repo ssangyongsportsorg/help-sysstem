@@ -35,7 +35,10 @@ function db_connect($host, $user, $passwd, $options = array()) {
                 $options['ssl']['cert'],
                 $options['ssl']['ca'],
                 null, null);
-    elseif(!$passwd)
+    elseif (isset($options['ssl_mode']) && $options['ssl_mode'] === 'required') {
+        // SSL required but no client cert — use system CA (e.g. TiDB Cloud Serverless)
+        $__db->ssl_set(null, null, null, null, null);
+    } elseif(!$passwd)
         return NULL;
 
     $port = ini_get("mysqli.default_port");
@@ -66,7 +69,8 @@ function db_connect($host, $user, $passwd, $options = array()) {
     if (defined('DBCONNECT_TIMEOUT'))
         $__db->options(MYSQLI_OPT_CONNECT_TIMEOUT, DBCONNECT_TIMEOUT);
 
-    $flags = isset($options['ssl']) ? MYSQLI_CLIENT_SSL : 0;
+    $ssl_enabled = isset($options['ssl']) || (isset($options['ssl_mode']) && $options['ssl_mode'] === 'required');
+    $flags = $ssl_enabled ? MYSQLI_CLIENT_SSL : 0;
     if (!@$__db->real_connect($host, $user, $passwd, null, $port, $socket, $flags))
         return NULL;
 
