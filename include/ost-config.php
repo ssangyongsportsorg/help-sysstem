@@ -70,9 +70,9 @@ define('TABLE_PREFIX','%CONFIG-PREFIX');
 #
 # More information (to-be) available in doc/security/hardening.md
 
-define('DBSSLCA', '/var/help-system/ssl/tidb-ca.pem');
-# define('DBSSLCERT','/path/to/client.crt');  // TiDB 通常不需要 client cert
-# define('DBSSLKEY','/path/to/client.key');    // TiDB 通常不需要 client key
+define('DBSSLCA',   '/var/help-system/ssl/tidb-ca.pem');
+define('DBSSLCERT', null);  // TiDB Serverless 不需要 client cert
+define('DBSSLKEY',  null);  // TiDB Serverless 不需要 client key
 
 #
 # Mail Options
